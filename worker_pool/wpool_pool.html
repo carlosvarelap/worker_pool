@@ -82,6 +82,16 @@
        If all workers are busy, waits for Timeout ms until one is free</p>
 </div></div>
 <div class="function">
+<h3 id="hash_worker/1">hash_worker(Sup::name() (see module wpool), HashKey::term()) -&gt; atom()</h3>
+
+
+<div class="description">
+
+<p>Picks a worker base on a hash result.
+       </p><pre class="sh_erlang">phash2(Term, Range)</pre><p> returns hash = integer,
+       0 &lt;= hash &lt; Range so </p><pre class="sh_erlang">1</pre><p> must be added</p>
+</div></div>
+<div class="function">
 <h3 id="cast_to_available_worker/1">cast_to_available_worker(Sup::name() (see module wpool), Cast::term()) -&gt; ok</h3>
 
 
