@@ -27,145 +27,145 @@
         
 
 <h1>wpool</h1>
-<h2 class="modsummary">Worker pool main interface.</h2>
+<h2 class="modsummary">Worker&nbsp;pool&nbsp;main&nbsp;interface.</h2>
 <div class="description">
-<p>Worker pool main interface.
-        Use functions provided by this module to manage your pools of workers</p></div>
+<p>Worker&nbsp;pool&nbsp;main&nbsp;interface.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;functions&nbsp;provided&nbsp;by&nbsp;this&nbsp;module&nbsp;to&nbsp;manage&nbsp;your&nbsp;pools&nbsp;of&nbsp;workers</p></div>
 <div id="types" class="category"><h4><a href="#types">Types</a></h4><hr />
-    <div class="type"><h3 id="type-available_worker_timeout">available_worker_timeout() = timeout()</h3></div>
-    <div class="type"><h3 id="type-name">name() = atom()</h3></div>
-    <div class="type"><h3 id="type-option">option() = {overrun_warning, infinity | pos_integer()} | {overrun_handler, {Module::atom(), Fun::atom()}} | {workers, pos_integer()} | {worker_opt, options() (see module gen)} | {worker, {Module::atom(), InitArg::term()}} | {strategy, strategy() (see module supervisor)}</h3></div>
-    <div class="type"><h3 id="type-stats">stats() = [{workers, pos_integer()} | {total_message_queue_len, non_neg_integer()} | {worker_stats, [{pos_integer(), worker_stats()}]}]</h3></div>
-    <div class="type"><h3 id="type-strategy">strategy() = best_worker | random_worker | next_worker | available_worker | {hash_worker, non_neg_integer()}</h3></div>
-    <div class="type"><h3 id="type-worker_stats">worker_stats() = [{messsage_queue_len, non_neg_integer()} | {memory, pos_integer()}]</h3></div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-available_worker_timeout">available_worker_timeout()&nbsp;=&nbsp;timeout()</h3></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-name">name()&nbsp;=&nbsp;atom()</h3></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-option">option() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{overrun_warning, infinity | integer() >= 1} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{overrun_handler, {Module :: atom(), Fun :: atom()}} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{workers, integer() >= 1} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{worker_opt, <a href="gen.html#type-options" class="seealso">gen:options()</a>} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{worker, {Module :: atom(), InitArg :: term()}} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{strategy, <a href="supervisor.html#type-strategy" class="seealso">supervisor:strategy()</a>}</h3></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-stats">stats() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{workers, integer() >= 1} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{total_message_queue_len, integer() >= 0} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{worker_stats, [{integer() >= 1, <a href="#type-worker_stats" class="seealso">worker_stats()</a>}]}]</h3></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-strategy">strategy() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best_worker |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random_worker |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next_worker |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available_worker |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{hash_worker, integer() >= 0}</h3></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-worker_stats">worker_stats() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{messsage_queue_len, integer() >= 0} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{memory, integer() >= 1}]</h3></div></div>
 <div id="functions" class="category"><h4><a href="#functions">Functions</a></h4><hr />
 <div class="function">
-<h3 id="start/0">start() -&gt; ok | {error, {already_started, wpool}}</h3>
+<h3 id="start/0">start()&nbsp;-&gt;&nbsp;ok&nbsp;|&nbsp;{error,&nbsp;{already_started,&nbsp;wpool}}</h3>
 
 
 <div class="description">
 
-<p>Starts the application</p>
+<p>Starts&nbsp;the&nbsp;application</p>
 </div></div>
 <div class="function">
-<h3 id="stop/0">stop() -&gt; ok</h3>
+<h3 id="stop/0">stop()&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
 
-<p>Stops the application</p>
+<p>Stops&nbsp;the&nbsp;application</p>
 </div></div>
 <div class="function">
-<h3 id="start_pool/1">start_pool(Name::name()) -&gt; {ok, pid()}</h3>
+<h3 id="start_pool/1">start_pool(Name::name())&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}</h3>
 
 
 <div class="description">
-<p>Equivalent to <a href="#start_pool/2" class="seealso">start_pool(Name, [])</a>.</p>
+<p>Equivalent&nbsp;to&nbsp;<a href="#start_pool/2" class="seealso">start_pool(Name,&nbsp;[])</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="start_pool/1-1">start_pool(Name::name(), Options::[option()]) -&gt; {ok, pid()} | {error, {already_started, pid()} | term()}</h3>
+<h3 id="start_pool/1-1">start_pool(Name::name(),&nbsp;Options::[option()])&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}&nbsp;|&nbsp;{error,&nbsp;{already_started,&nbsp;pid()}&nbsp;|&nbsp;term()}</h3>
 
 
 <div class="description">
 
-<p>Starts (and links) a pool of N wpool_processes.
-       The result pid belongs to a supervisor (in case you want to add it to a
-       supervisor tree)</p>
+<p>Starts&nbsp;(and&nbsp;links)&nbsp;a&nbsp;pool&nbsp;of&nbsp;N&nbsp;wpool_processes.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;result&nbsp;pid&nbsp;belongs&nbsp;to&nbsp;a&nbsp;supervisor&nbsp;(in&nbsp;case&nbsp;you&nbsp;want&nbsp;to&nbsp;add&nbsp;it&nbsp;to&nbsp;a
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;supervisor&nbsp;tree)</p>
 </div></div>
 <div class="function">
-<h3 id="start_sup_pool/1">start_sup_pool(Name::name()) -&gt; {ok, pid()}</h3>
+<h3 id="start_sup_pool/1">start_sup_pool(Name::name())&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}</h3>
 
 
 <div class="description">
-<p>Equivalent to <a href="#start_sup_pool/2" class="seealso">start_sup_pool(Name, [])</a>.</p>
+<p>Equivalent&nbsp;to&nbsp;<a href="#start_sup_pool/2" class="seealso">start_sup_pool(Name,&nbsp;[])</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="start_sup_pool/1-1">start_sup_pool(Name::name(), Options::[option()]) -&gt; {ok, pid()} | {error, {already_started, pid()} | term()}</h3>
+<h3 id="start_sup_pool/1-1">start_sup_pool(Name::name(),&nbsp;Options::[option()])&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}&nbsp;|&nbsp;{error,&nbsp;{already_started,&nbsp;pid()}&nbsp;|&nbsp;term()}</h3>
 
 
 <div class="description">
 
-<p>Starts a pool of N wpool_processes supervised by <a href="wpool_sup.html" class="seealso">wpool_sup</a></p>
+<p>Starts&nbsp;a&nbsp;pool&nbsp;of&nbsp;N&nbsp;wpool_processes&nbsp;supervised&nbsp;by&nbsp;<a href="wpool_sup.html" class="seealso">wpool_sup</a></p>
 </div></div>
 <div class="function">
-<h3 id="stop_pool/1">stop_pool(Name::name()) -&gt; ok</h3>
+<h3 id="stop_pool/1">stop_pool(Name::name())&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
 
-<p>Stops the pool</p>
+<p>Stops&nbsp;the&nbsp;pool</p>
 </div></div>
 <div class="function">
-<h3 id="default_strategy/0">default_strategy() -&gt; strategy()</h3>
+<h3 id="default_strategy/0">default_strategy()&nbsp;-&gt;&nbsp;strategy()</h3>
 
 
 <div class="description">
 
-<p>Default strategy</p>
+<p>Default&nbsp;strategy</p>
 </div></div>
 <div class="function">
-<h3 id="call/1">call(Sup::name(), Call::term()) -&gt; term()</h3>
+<h3 id="call/1">call(Sup::name(),&nbsp;Call::term())&nbsp;-&gt;&nbsp;term()</h3>
 
 
 <div class="description">
-<p>Equivalent to <a href="#call/3" class="seealso">call(Sup, Call, default_strategy())</a>.</p>
+<p>Equivalent&nbsp;to&nbsp;<a href="#call/3" class="seealso">call(Sup,&nbsp;Call,&nbsp;default_strategy())</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="call/1-1">call(Sup::name(), Call::term(), Strategy::strategy()) -&gt; term()</h3>
+<h3 id="call/1-1">call(Sup::name(),&nbsp;Call::term(),&nbsp;Strategy::strategy())&nbsp;-&gt;&nbsp;term()</h3>
 
 
 <div class="description">
-<p>Equivalent to <a href="#call/4" class="seealso">call(Sup, Call, Strategy, 5000)</a>.</p>
+<p>Equivalent&nbsp;to&nbsp;<a href="#call/4" class="seealso">call(Sup,&nbsp;Call,&nbsp;Strategy,&nbsp;5000)</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="call/1-2">call(Sup::name(), Call::term(), Strategy::strategy(), Timeout::timeout()) -&gt; term()</h3>
+<h3 id="call/1-2">call(Sup::name(),&nbsp;Call::term(),&nbsp;Strategy::strategy(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;term()</h3>
 
 
 <div class="description">
 
-<p>Picks a server and issues the call to it.
-       For all strategies except available_worker, Timeout applies only to the
-       time spent on the actual call to the worker, because time spent finding
-       the worker in other strategies is negligible.
-       For available_worker the time used choosing a worker is also considered</p>
+<p>Picks&nbsp;a&nbsp;server&nbsp;and&nbsp;issues&nbsp;the&nbsp;call&nbsp;to&nbsp;it.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;all&nbsp;strategies&nbsp;except&nbsp;available_worker,&nbsp;Timeout&nbsp;applies&nbsp;only&nbsp;to&nbsp;the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;spent&nbsp;on&nbsp;the&nbsp;actual&nbsp;call&nbsp;to&nbsp;the&nbsp;worker,&nbsp;because&nbsp;time&nbsp;spent&nbsp;finding
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;worker&nbsp;in&nbsp;other&nbsp;strategies&nbsp;is&nbsp;negligible.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;available_worker&nbsp;the&nbsp;time&nbsp;used&nbsp;choosing&nbsp;a&nbsp;worker&nbsp;is&nbsp;also&nbsp;considered</p>
 </div></div>
 <div class="function">
-<h3 id="call/1-3">call(Sup::name(), Call::term(), Strategy::strategy(), Worker_Timeout::available_worker_timeout(), Timeout::timeout()) -&gt; term()</h3>
+<h3 id="call/1-3">call(Sup::name(),&nbsp;Call::term(),&nbsp;Strategy::strategy(),&nbsp;WorkerTimeout::available_worker_timeout(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;term()</h3>
 
 
 <div class="description">
 
-<p>Picks a server and issues the call to it.
-       For all strategies except available_worker, Worker_Timeout is ignored
-       For available_worker Worker_Timeout is the time used choosing a worker</p>
+<p>Picks&nbsp;a&nbsp;server&nbsp;and&nbsp;issues&nbsp;the&nbsp;call&nbsp;to&nbsp;it.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;all&nbsp;strategies&nbsp;except&nbsp;available_worker,&nbsp;WorkerTimeout&nbsp;is&nbsp;ignored
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;available_worker&nbsp;the&nbsp;total&nbsp;timeout&nbsp;will&nbsp;be&nbsp;WorkerTimeout&nbsp;+&nbsp;Timeout.</p>
 </div></div>
 <div class="function">
-<h3 id="cast/1">cast(Sup::name(), Cast::term()) -&gt; ok</h3>
+<h3 id="cast/1">cast(Sup::name(),&nbsp;Cast::term())&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
-<p>Equivalent to <a href="#cast/3" class="seealso">cast(Sup, Cast, default_strategy())</a>.</p>
+<p>Equivalent&nbsp;to&nbsp;<a href="#cast/3" class="seealso">cast(Sup,&nbsp;Cast,&nbsp;default_strategy())</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="cast/1-1">cast(Sup::name(), Cast::term(), Strategy::strategy()) -&gt; ok</h3>
+<h3 id="cast/1-1">cast(Sup::name(),&nbsp;Cast::term(),&nbsp;Strategy::strategy())&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
 
-<p>Picks a server and issues the cast to it</p>
+<p>Picks&nbsp;a&nbsp;server&nbsp;and&nbsp;issues&nbsp;the&nbsp;cast&nbsp;to&nbsp;it</p>
 </div></div>
 <div class="function">
-<h3 id="stats/1">stats(Sup::name()) -&gt; stats()</h3>
+<h3 id="stats/1">stats(Sup::name())&nbsp;-&gt;&nbsp;stats()</h3>
 
 
 <div class="description">
 
-<p>Retrieves a snapshot of the pool stats</p>
+<p>Retrieves&nbsp;a&nbsp;snapshot&nbsp;of&nbsp;the&nbsp;pool&nbsp;stats</p>
 </div></div></div>
 
 <authors>
 
-<aname>Fernando Benavides</aname>
+<aname>Fernando&nbsp;Benavides</aname>
 <email>elbrujohalcon@inaka.net</email></authors>
       </div>
   </div>

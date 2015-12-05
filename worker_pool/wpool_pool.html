@@ -27,109 +27,110 @@
         
 
 <h1>wpool_pool</h1>
-<h2 class="modsummary">A pool of workers.</h2>
+<h2 class="modsummary">A&nbsp;pool&nbsp;of&nbsp;workers.</h2>
 <div class="description">
-<p>A pool of workers. If you want to put it in your supervisor tree,
-        remember it's a supervisor.</p></div>
+<p>A&nbsp;pool&nbsp;of&nbsp;workers.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;put&nbsp;it&nbsp;in&nbsp;your&nbsp;supervisor&nbsp;tree,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;remember&nbsp;it's&nbsp;a&nbsp;supervisor.</p></div>
 <div id="functions" class="category"><h4><a href="#functions">Functions</a></h4><hr />
 <div class="function">
-<h3 id="create_table/0">create_table() -&gt; ok</h3>
+<h3 id="create_table/0">create_table()&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
 
-<p>Creates the ets table that will hold the information about active pools</p>
+<p>Creates&nbsp;the&nbsp;ets&nbsp;table&nbsp;that&nbsp;will&nbsp;hold&nbsp;the&nbsp;information&nbsp;about&nbsp;active&nbsp;pools</p>
 </div></div>
 <div class="function">
-<h3 id="start_link/1">start_link(Name::name() (see module wpool), Options::[option() (see module wpool)]) -&gt; {ok, pid()} | {error, {already_started, pid()} | term()}</h3>
+<h3 id="start_link/1">start_link(Name::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Options::[option()&nbsp;(see&nbsp;module&nbsp;wpool)])&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}&nbsp;|&nbsp;{error,&nbsp;{already_started,&nbsp;pid()}&nbsp;|&nbsp;term()}</h3>
 
 
 <div class="description">
 
-<p>Starts a supervisor with several <a href="wpool_process.html" class="seealso">wpool_process</a>es as its children</p>
+<p>Starts&nbsp;a&nbsp;supervisor&nbsp;with&nbsp;several&nbsp;<a href="wpool_process.html" class="seealso">wpool_process</a>es&nbsp;as&nbsp;its&nbsp;children</p>
 </div></div>
 <div class="function">
-<h3 id="best_worker/1">best_worker(Sup::name() (see module wpool)) -&gt; atom()</h3>
+<h3 id="best_worker/1">best_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;atom()</h3>
 
 
 <div class="description">
 
-<p>Picks the worker with the smaller queue of messages.</p>
+<p>Picks&nbsp;the&nbsp;worker&nbsp;with&nbsp;the&nbsp;smaller&nbsp;queue&nbsp;of&nbsp;messages.</p>
 </div></div>
 <div class="function">
-<h3 id="random_worker/1">random_worker(Sup::name() (see module wpool)) -&gt; atom()</h3>
+<h3 id="random_worker/1">random_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;atom()</h3>
 
 
 <div class="description">
 
-<p>Picks a random worker</p>
+<p>Picks&nbsp;a&nbsp;random&nbsp;worker</p>
 </div></div>
 <div class="function">
-<h3 id="next_worker/1">next_worker(Sup::name() (see module wpool)) -&gt; atom()</h3>
+<h3 id="next_worker/1">next_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;atom()</h3>
 
 
 <div class="description">
 
-<p>Picks the next worker in a round robin fashion</p>
+<p>Picks&nbsp;the&nbsp;next&nbsp;worker&nbsp;in&nbsp;a&nbsp;round&nbsp;robin&nbsp;fashion</p>
 </div></div>
 <div class="function">
-<h3 id="available_worker/1">available_worker(Sup::name() (see module wpool), Timeout::timeout()) -&gt; atom()</h3>
+<h3 id="call_available_worker/1">call_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Call::any(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;any()</h3>
 
 
 <div class="description">
 
-<p>Picks the first available worker.
-       If all workers are busy, waits for Timeout ms until one is free</p>
+<p>Picks&nbsp;the&nbsp;first&nbsp;available&nbsp;worker&nbsp;and&nbsp;sends&nbsp;the&nbsp;call&nbsp;to&nbsp;it.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;timeout&nbsp;provided&nbsp;includes&nbsp;the&nbsp;time&nbsp;it&nbsp;takes&nbsp;to&nbsp;get&nbsp;a&nbsp;worker
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;for&nbsp;it&nbsp;to&nbsp;process&nbsp;the&nbsp;call.</p>
 </div></div>
 <div class="function">
-<h3 id="hash_worker/1">hash_worker(Sup::name() (see module wpool), HashKey::term()) -&gt; atom()</h3>
+<h3 id="hash_worker/1">hash_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;HashKey::term())&nbsp;-&gt;&nbsp;atom()</h3>
 
 
 <div class="description">
 
-<p>Picks a worker base on a hash result.
-       </p><pre class="sh_erlang">phash2(Term, Range)</pre><p> returns hash = integer,
-       0 &lt;= hash &lt; Range so </p><pre class="sh_erlang">1</pre><p> must be added</p>
+<p>Picks&nbsp;a&nbsp;worker&nbsp;base&nbsp;on&nbsp;a&nbsp;hash&nbsp;result.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><pre class="sh_erlang">phash2(Term,&nbsp;Range)</pre><p>&nbsp;returns&nbsp;hash&nbsp;=&nbsp;integer,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&lt;=&nbsp;hash&nbsp;&lt;&nbsp;Range&nbsp;so&nbsp;</p><pre class="sh_erlang">1</pre><p>&nbsp;must&nbsp;be&nbsp;added</p>
 </div></div>
 <div class="function">
-<h3 id="cast_to_available_worker/1">cast_to_available_worker(Sup::name() (see module wpool), Cast::term()) -&gt; ok</h3>
+<h3 id="cast_to_available_worker/1">cast_to_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Cast::term())&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
 
-<p>Casts a message to the first available worker.
-       Since we can wait forever for a wpool:cast to be delivered
-       but we don't want the caller to be blocked, this function
-       just forwards the cast when it gets the worker</p>
+<p>Casts&nbsp;a&nbsp;message&nbsp;to&nbsp;the&nbsp;first&nbsp;available&nbsp;worker.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since&nbsp;we&nbsp;can&nbsp;wait&nbsp;forever&nbsp;for&nbsp;a&nbsp;wpool:cast&nbsp;to&nbsp;be&nbsp;delivered
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;we&nbsp;don't&nbsp;want&nbsp;the&nbsp;caller&nbsp;to&nbsp;be&nbsp;blocked,&nbsp;this&nbsp;function
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;just&nbsp;forwards&nbsp;the&nbsp;cast&nbsp;when&nbsp;it&nbsp;gets&nbsp;the&nbsp;worker</p>
 </div></div>
 <div class="function">
-<h3 id="stats/1">stats(Sup::name() (see module wpool)) -&gt; stats() (see module wpool)</h3>
+<h3 id="stats/1">stats(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;stats()&nbsp;(see&nbsp;module&nbsp;wpool)</h3>
 
 
 <div class="description">
 
-<p>Retrieves a snapshot of the pool stats</p>
+<p>Retrieves&nbsp;a&nbsp;snapshot&nbsp;of&nbsp;the&nbsp;pool&nbsp;stats</p>
 </div></div>
 <div class="function">
-<h3 id="worker_names/1">worker_names(Pool_Name::name() (see module wpool)) -&gt; [atom()]</h3>
+<h3 id="worker_names/1">worker_names(Pool_Name::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;[atom()]</h3>
 
 
 <div class="description">
 
-<p>Returns the names of the workers in the pool</p>
+<p>Returns&nbsp;the&nbsp;names&nbsp;of&nbsp;the&nbsp;workers&nbsp;in&nbsp;the&nbsp;pool</p>
 </div></div>
 <div class="function">
-<h3 id="wpool_size/1">wpool_size(Name::atom()) -&gt; non_neg_integer() | undefined</h3>
+<h3 id="wpool_size/1">wpool_size(Name::atom())&nbsp;-&gt;&nbsp;non_neg_integer()&nbsp;|&nbsp;undefined</h3>
 
 
 <div class="description">
 
-<p>the number of workers in the pool</p>
+<p>the&nbsp;number&nbsp;of&nbsp;workers&nbsp;in&nbsp;the&nbsp;pool</p>
 </div></div></div>
 
 <authors>
 
-<aname>Fernando Benavides</aname>
+<aname>Fernando&nbsp;Benavides</aname>
 <email>elbrujohalcon@inaka.net</email></authors>
       </div>
   </div>

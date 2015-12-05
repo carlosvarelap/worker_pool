@@ -27,46 +27,53 @@
         
 
 <h1>wpool_process</h1>
-<h2 class="modsummary">Decorator over gen_server that lets wpool_pool
-        control certain aspects of the execution.</h2>
+<h2 class="modsummary">Decorator&nbsp;over&nbsp;gen_server&nbsp;that&nbsp;lets&nbsp;wpool_pool
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;control&nbsp;certain&nbsp;aspects&nbsp;of&nbsp;the&nbsp;execution.</h2>
 <div class="description">
-<p>Decorator over <a href="gen_server.html" class="seealso">gen_server</a> that lets <a href="wpool_pool.html" class="seealso">wpool_pool</a>
-        control certain aspects of the execution</p></div>
+<p>Decorator&nbsp;over&nbsp;<a href="gen_server.html" class="seealso">gen_server</a>&nbsp;that&nbsp;lets&nbsp;<a href="wpool_pool.html" class="seealso">wpool_pool</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;control&nbsp;certain&nbsp;aspects&nbsp;of&nbsp;the&nbsp;execution</p></div>
 <div id="functions" class="category"><h4><a href="#functions">Functions</a></h4><hr />
 <div class="function">
-<h3 id="start_link/1">start_link(Name::name() (see module wpool), Module::module(), InitArgs::term(), Options::[option() (see module wpool)]) -&gt; {ok, pid()} | ignore | {error, {already_started, pid()} | term()}</h3>
+<h3 id="start_link/1">start_link(Name::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Module::module(),&nbsp;InitArgs::term(),&nbsp;Options::[option()&nbsp;(see&nbsp;module&nbsp;wpool)])&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}&nbsp;|&nbsp;ignore&nbsp;|&nbsp;{error,&nbsp;{already_started,&nbsp;pid()}&nbsp;|&nbsp;term()}</h3>
 
 
 <div class="description">
 
-<p>Starts a named process</p>
+<p>Starts&nbsp;a&nbsp;named&nbsp;process</p>
 </div></div>
 <div class="function">
-<h3 id="call/1">call(Process::name() (see module wpool) | pid(), Call::term(), Timeout::timeout()) -&gt; term()</h3>
+<h3 id="call/1">call(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Call::term(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;term()</h3>
 
 
 <div class="description">
-<p>Equivalent to <a href="gen_server.xml.html#call/3" class="seealso">gen_server:call(Process, Call, Timeout)</a>.</p>
+<p>Equivalent&nbsp;to&nbsp;<a href="gen_server.xml.html#call/3" class="seealso">gen_server:call(Process,&nbsp;Call,&nbsp;Timeout)</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="cast/1">cast(Process::name() (see module wpool) | pid(), Cast::term()) -&gt; ok</h3>
+<h3 id="cast/1">cast(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Cast::term())&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
-<p>Equivalent to <a href="gen_server.xml.html#cast/2" class="seealso">gen_server:cast(Process, Cast)</a>.</p>
+<p>Equivalent&nbsp;to&nbsp;<a href="gen_server.xml.html#cast/2" class="seealso">gen_server:cast(Process,&nbsp;{cast,&nbsp;Cast})</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="age/1">age(Process::name() (see module wpool) | pid()) -&gt; non_neg_integer()</h3>
+<h3 id="cast_call/1">cast_call(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;From::pid(),&nbsp;Call::term())&nbsp;-&gt;&nbsp;ok</h3>
+
+
+<div class="description">
+<p>Equivalent&nbsp;to&nbsp;<a href="gen_server.xml.html#cast/2" class="seealso">gen_server:cast(Process,&nbsp;{call,&nbsp;From,&nbsp;Call})</a>.</p>
+</div></div>
+<div class="function">
+<h3 id="age/1">age(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid())&nbsp;-&gt;&nbsp;non_neg_integer()</h3>
 
 
 <div class="description">
 
-<p>Report how old a process is in <em>microseconds</em></p>
+<p>Report&nbsp;how&nbsp;old&nbsp;a&nbsp;process&nbsp;is&nbsp;in&nbsp;<em>microseconds</em></p>
 </div></div></div>
 
 <authors>
 
-<aname>Fernando Benavides</aname>
+<aname>Fernando&nbsp;Benavides</aname>
 <email>elbrujohalcon@inaka.net</email></authors>
       </div>
   </div>
