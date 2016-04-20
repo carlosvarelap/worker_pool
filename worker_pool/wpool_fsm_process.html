@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>wpool_fsm_process (worker_pool) -  (Erlang Documentation)</title>
+    <link href="../erldocs.css" type="text/css" rel="stylesheet"/>
+    <link href="/search.xml" rel="search" type="application/opensearchdescription+xml" title="erldocs"/>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-44246018-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+
+  <body>
+    <div id="sidebar" class="inactive">
+      <input type="text" id="search" autocomplete="off" placeholder="press TAB to search"/>
+      <ul id="results"> </ul>
+    </div>
+
+    <div id="content">
+      <div style="margin:0px; padding:10px 20px;">
+        
+
+<h1>wpool_fsm_process</h1>
+<h2 class="modsummary">Decorator&nbsp;over&nbsp;gen_fsm&nbsp;that&nbsp;lets&nbsp;wpool_pool
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;control&nbsp;certain&nbsp;aspects&nbsp;of&nbsp;the&nbsp;execution.</h2>
+<div class="description">
+<p>Decorator&nbsp;over&nbsp;<a href="gen_fsm.html" class="seealso">gen_fsm</a>&nbsp;that&nbsp;lets&nbsp;<a href="wpool_pool.html" class="seealso">wpool_pool</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;control&nbsp;certain&nbsp;aspects&nbsp;of&nbsp;the&nbsp;execution</p></div>
+<div id="types" class="category"><h4><a href="#types">Types</a></h4><hr />
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-from">from()&nbsp;=&nbsp;{pid(),&nbsp;reference()}</h3></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-fsm_state">fsm_state()&nbsp;=&nbsp;atom()</h3></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-state">state() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#state{name = undefined | atom(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mod = undefined | atom(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = undefined | term(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options =<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{time_checker | queue_manager, atom()} |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Users/elbrujohalcon/Projects/inaka/worker_pool/doc/wpool.html#type-option" class="seealso">wpool:option()</a>],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;born = <a href="erlang.html#type-timestamp" class="seealso">erlang:timestamp()</a>,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fsm_state = undefined | <a href="#type-fsm_state" class="seealso">fsm_state()</a>}</h3></div></div>
+<div id="functions" class="category"><h4><a href="#functions">Functions</a></h4><hr />
+<div class="function">
+<h3 id="start_link/1">start_link(Name::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Module::module(),&nbsp;InitArgs::term(),&nbsp;Options::[option()&nbsp;(see&nbsp;module&nbsp;wpool)])&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}&nbsp;|&nbsp;ignore&nbsp;|&nbsp;{error,&nbsp;{already_started,&nbsp;pid()}&nbsp;|&nbsp;term()}</h3>
+
+
+<div class="description">
+
+<p>Starts&nbsp;a&nbsp;named&nbsp;process</p>
+</div></div>
+<div class="function">
+<h3 id="send_event/1">send_event(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Event::term())&nbsp;-&gt;&nbsp;term()</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="sync_send_event/1">sync_send_event(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Event::term())&nbsp;-&gt;&nbsp;term()</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="sync_send_event/1-1">sync_send_event(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Event::term(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;term()</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="send_all_state_event/1">send_all_state_event(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Event::term())&nbsp;-&gt;&nbsp;term()</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="sync_send_all_state_event/1">sync_send_all_state_event(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Event::term())&nbsp;-&gt;&nbsp;term()</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="sync_send_all_state_event/1-1">sync_send_all_state_event(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;Event::term(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;term()</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="cast_call/1">cast_call(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;From::pid(),&nbsp;Event::term())&nbsp;-&gt;&nbsp;ok</h3>
+
+
+<div class="description">
+<p>Equivalent&nbsp;to&nbsp;<a href="gen_fsm.xml.html#send_event/2" class="seealso">gen_fsm:send_event(Process,
+		&nbsp;&nbsp;&nbsp;{sync_send_event,&nbsp;From,&nbsp;Event})</a>.</p>
+</div></div>
+<div class="function">
+<h3 id="age/1">age(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid())&nbsp;-&gt;&nbsp;non_neg_integer()</h3>
+
+
+<div class="description">
+
+<p>Report&nbsp;how&nbsp;old&nbsp;a&nbsp;process&nbsp;is&nbsp;in&nbsp;<em>microseconds</em></p>
+</div></div>
+<div class="function">
+<h3 id="format_status/2">format_status(Opt::normal&nbsp;|&nbsp;terminate,&nbsp;X2::list())&nbsp;-&gt;&nbsp;term()</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="handle_event/1">handle_event(Event::term(),&nbsp;StateName::fsm_state(),&nbsp;StateData::state())&nbsp;-&gt;&nbsp;{next_state,&nbsp;dispatch_state,&nbsp;state()}&nbsp;|&nbsp;{stop,&nbsp;term(),&nbsp;state()}</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="handle_sync_event/1">handle_sync_event(Event::term(),&nbsp;From::from(),&nbsp;StateName::fsm_state(),&nbsp;State::state())&nbsp;-&gt;&nbsp;{reply,&nbsp;term(),&nbsp;dispatch_state,&nbsp;state()}&nbsp;|&nbsp;{next_state,&nbsp;dispatch_state,&nbsp;state()}&nbsp;|&nbsp;{stop,&nbsp;term(),&nbsp;state()}</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="dispatch_state/1">dispatch_state(Event::term(),&nbsp;StateData::state())&nbsp;-&gt;&nbsp;{next_state,&nbsp;dispatch_state,&nbsp;state()}&nbsp;|&nbsp;{stop,&nbsp;term(),&nbsp;state()}</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="dispatch_state/1-1">dispatch_state(Event::term(),&nbsp;From::from(),&nbsp;StateData::state())&nbsp;-&gt;&nbsp;{reply,&nbsp;term(),&nbsp;dispatch_state,&nbsp;state()}&nbsp;|&nbsp;{next_state,&nbsp;dispatch_state,&nbsp;state()}&nbsp;|&nbsp;{stop,&nbsp;term(),&nbsp;state()}</h3>
+
+
+<div class="description">
+&nbsp;</div></div></div>
+
+<authors>
+
+<aname>Felipe&nbsp;Ripoll</aname>
+<email>ferigis@gmail.com</email></authors>
+      </div>
+  </div>
+
+    <script type="text/javascript">
+      var CURRENT_ROOT = "../";
+    </script>
+
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="../erldocs_index.js"></script>
+    <script type="text/javascript" src="../erldocs.js"></script>
+  </body>
+</html>

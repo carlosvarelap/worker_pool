@@ -31,6 +31,8 @@
 <div class="description">
 <p>A&nbsp;pool&nbsp;of&nbsp;workers.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;put&nbsp;it&nbsp;in&nbsp;your&nbsp;supervisor&nbsp;tree,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;remember&nbsp;it's&nbsp;a&nbsp;supervisor.</p></div>
+<div id="types" class="category"><h4><a href="#types">Types</a></h4><hr />
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-wpool">wpool() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#wpool{name = undefined | <a href="/Users/elbrujohalcon/Projects/inaka/worker_pool/doc/wpool.html#type-name" class="seealso">wpool:name()</a>,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size = undefined | integer() >= 1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = undefined | integer() >= 1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opts = undefined | [<a href="/Users/elbrujohalcon/Projects/inaka/worker_pool/doc/wpool.html#type-option" class="seealso">wpool:option()</a>],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qmanager = undefined | <a href="wpool_queue_manager.html#type-queue_mgr" class="seealso">wpool_queue_manager:queue_mgr()</a>,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;born = <a href="erlang.html#type-timestamp" class="seealso">erlang:timestamp()</a>}</h3></div></div>
 <div id="functions" class="category"><h4><a href="#functions">Functions</a></h4><hr />
 <div class="function">
 <h3 id="create_table/0">create_table()&nbsp;-&gt;&nbsp;ok</h3>
@@ -83,6 +85,26 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;for&nbsp;it&nbsp;to&nbsp;process&nbsp;the&nbsp;call.</p>
 </div></div>
 <div class="function">
+<h3 id="sync_send_event_to_available_worker/1">sync_send_event_to_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Event::any(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;any()</h3>
+
+
+<div class="description">
+
+<p>Picks&nbsp;the&nbsp;first&nbsp;available&nbsp;worker&nbsp;and&nbsp;sends&nbsp;the&nbsp;event&nbsp;to&nbsp;it.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;timeout&nbsp;provided&nbsp;includes&nbsp;the&nbsp;time&nbsp;it&nbsp;takes&nbsp;to&nbsp;get&nbsp;a&nbsp;worker
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;for&nbsp;it&nbsp;to&nbsp;process&nbsp;the&nbsp;call.</p>
+</div></div>
+<div class="function">
+<h3 id="sync_send_all_event_to_available_worker/1">sync_send_all_event_to_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Event::any(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;any()</h3>
+
+
+<div class="description">
+
+<p>Picks&nbsp;the&nbsp;first&nbsp;available&nbsp;worker&nbsp;and&nbsp;sends&nbsp;the&nbsp;event&nbsp;to&nbsp;it.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;timeout&nbsp;provided&nbsp;includes&nbsp;the&nbsp;time&nbsp;it&nbsp;takes&nbsp;to&nbsp;get&nbsp;a&nbsp;worker
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;for&nbsp;it&nbsp;to&nbsp;process&nbsp;the&nbsp;call.</p>
+</div></div>
+<div class="function">
 <h3 id="hash_worker/1">hash_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;HashKey::term())&nbsp;-&gt;&nbsp;atom()</h3>
 
 
@@ -102,6 +124,28 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since&nbsp;we&nbsp;can&nbsp;wait&nbsp;forever&nbsp;for&nbsp;a&nbsp;wpool:cast&nbsp;to&nbsp;be&nbsp;delivered
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;we&nbsp;don't&nbsp;want&nbsp;the&nbsp;caller&nbsp;to&nbsp;be&nbsp;blocked,&nbsp;this&nbsp;function
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;just&nbsp;forwards&nbsp;the&nbsp;cast&nbsp;when&nbsp;it&nbsp;gets&nbsp;the&nbsp;worker</p>
+</div></div>
+<div class="function">
+<h3 id="send_event_to_available_worker/1">send_event_to_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Event::term())&nbsp;-&gt;&nbsp;ok</h3>
+
+
+<div class="description">
+
+<p>Sends&nbsp;an&nbsp;event&nbsp;to&nbsp;the&nbsp;first&nbsp;available&nbsp;worker.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since&nbsp;we&nbsp;can&nbsp;wait&nbsp;forever&nbsp;for&nbsp;a&nbsp;wpool:send_event&nbsp;to&nbsp;be&nbsp;delivered
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;we&nbsp;don't&nbsp;want&nbsp;the&nbsp;caller&nbsp;to&nbsp;be&nbsp;blocked,&nbsp;this&nbsp;function
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;just&nbsp;forwards&nbsp;the&nbsp;event&nbsp;when&nbsp;it&nbsp;gets&nbsp;the&nbsp;worker</p>
+</div></div>
+<div class="function">
+<h3 id="send_all_event_to_available_worker/1">send_all_event_to_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Event::term())&nbsp;-&gt;&nbsp;ok</h3>
+
+
+<div class="description">
+
+<p>Sends&nbsp;an&nbsp;event&nbsp;to&nbsp;the&nbsp;first&nbsp;available&nbsp;worker.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since&nbsp;we&nbsp;can&nbsp;wait&nbsp;forever&nbsp;for&nbsp;a&nbsp;wpool:send_event&nbsp;to&nbsp;be&nbsp;delivered
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;we&nbsp;don't&nbsp;want&nbsp;the&nbsp;caller&nbsp;to&nbsp;be&nbsp;blocked,&nbsp;this&nbsp;function
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;just&nbsp;forwards&nbsp;the&nbsp;event&nbsp;when&nbsp;it&nbsp;gets&nbsp;the&nbsp;worker</p>
 </div></div>
 <div class="function">
 <h3 id="stats/1">stats(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;stats()&nbsp;(see&nbsp;module&nbsp;wpool)</h3>
@@ -126,6 +170,32 @@
 <div class="description">
 
 <p>the&nbsp;number&nbsp;of&nbsp;workers&nbsp;in&nbsp;the&nbsp;pool</p>
+</div></div>
+<div class="function">
+<h3 id="wpool_set/1">wpool_set(Tail::[{atom(),&nbsp;any()}],&nbsp;WPool::wpool())&nbsp;-&gt;&nbsp;wpool()</h3>
+
+
+<div class="description">
+
+<p>Set&nbsp;values&nbsp;from&nbsp;the&nbsp;worker&nbsp;pool&nbsp;record.&nbsp;Useful&nbsp;when&nbsp;using
+&nbsp;&nbsp;a&nbsp;custom&nbsp;strategy&nbsp;function.</p>
+</div></div>
+<div class="function">
+<h3 id="wpool_get/1">wpool_get(List::atom(),&nbsp;WPool::wpool())&nbsp;-&gt;&nbsp;any()</h3>
+
+
+<div class="description">
+
+<p>Get&nbsp;values&nbsp;from&nbsp;the&nbsp;worker&nbsp;pool&nbsp;record.&nbsp;Useful&nbsp;when&nbsp;using&nbsp;a&nbsp;custom
+&nbsp;&nbsp;strategy&nbsp;function.</p>
+</div></div>
+<div class="function">
+<h3 id="find_wpool/1">find_wpool(Name::atom())&nbsp;-&gt;&nbsp;wpool()</h3>
+
+
+<div class="description">
+
+<p>Use&nbsp;this&nbsp;function&nbsp;to&nbsp;get&nbsp;the&nbsp;Worker&nbsp;pool&nbsp;record&nbsp;in&nbsp;a&nbsp;custom&nbsp;worker.</p>
 </div></div></div>
 
 <authors>
