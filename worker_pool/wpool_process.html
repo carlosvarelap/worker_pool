@@ -32,6 +32,8 @@
 <div class="description">
 <p>Decorator&nbsp;over&nbsp;<a href="gen_server.html" class="seealso">gen_server</a>&nbsp;that&nbsp;lets&nbsp;<a href="wpool_pool.html" class="seealso">wpool_pool</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;control&nbsp;certain&nbsp;aspects&nbsp;of&nbsp;the&nbsp;execution</p></div>
+<div id="types" class="category"><h4><a href="#types">Types</a></h4><hr />
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-from">from()&nbsp;=&nbsp;{pid(),&nbsp;reference()}</h3></div></div>
 <div id="functions" class="category"><h4><a href="#functions">Functions</a></h4><hr />
 <div class="function">
 <h3 id="start_link/1">start_link(Name::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Module::module(),&nbsp;InitArgs::term(),&nbsp;Options::[option()&nbsp;(see&nbsp;module&nbsp;wpool)])&nbsp;-&gt;&nbsp;{ok,&nbsp;pid()}&nbsp;|&nbsp;ignore&nbsp;|&nbsp;{error,&nbsp;{already_started,&nbsp;pid()}&nbsp;|&nbsp;term()}</h3>
@@ -56,19 +58,11 @@
 <p>Equivalent&nbsp;to&nbsp;<a href="gen_server.xml.html#cast/2" class="seealso">gen_server:cast(Process,&nbsp;{cast,&nbsp;Cast})</a>.</p>
 </div></div>
 <div class="function">
-<h3 id="cast_call/1">cast_call(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;From::pid(),&nbsp;Call::term())&nbsp;-&gt;&nbsp;ok</h3>
+<h3 id="cast_call/1">cast_call(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid(),&nbsp;From::from(),&nbsp;Call::term())&nbsp;-&gt;&nbsp;ok</h3>
 
 
 <div class="description">
 <p>Equivalent&nbsp;to&nbsp;<a href="gen_server.xml.html#cast/2" class="seealso">gen_server:cast(Process,&nbsp;{call,&nbsp;From,&nbsp;Call})</a>.</p>
-</div></div>
-<div class="function">
-<h3 id="age/1">age(Process::name()&nbsp;(see&nbsp;module&nbsp;wpool)&nbsp;|&nbsp;pid())&nbsp;-&gt;&nbsp;non_neg_integer()</h3>
-
-
-<div class="description">
-
-<p>Report&nbsp;how&nbsp;old&nbsp;a&nbsp;process&nbsp;is&nbsp;in&nbsp;<em>microseconds</em></p>
 </div></div></div>
 
 <authors>

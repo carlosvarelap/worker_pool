@@ -32,7 +32,7 @@
 <p>A&nbsp;pool&nbsp;of&nbsp;workers.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;put&nbsp;it&nbsp;in&nbsp;your&nbsp;supervisor&nbsp;tree,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;remember&nbsp;it's&nbsp;a&nbsp;supervisor.</p></div>
 <div id="types" class="category"><h4><a href="#types">Types</a></h4><hr />
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-wpool">wpool() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#wpool{name = undefined | <a href="/Users/elbrujohalcon/Projects/inaka/worker_pool/doc/wpool.html#type-name" class="seealso">wpool:name()</a>,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size = undefined | integer() >= 1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = undefined | integer() >= 1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opts = undefined | [<a href="/Users/elbrujohalcon/Projects/inaka/worker_pool/doc/wpool.html#type-option" class="seealso">wpool:option()</a>],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qmanager = undefined | <a href="wpool_queue_manager.html#type-queue_mgr" class="seealso">wpool_queue_manager:queue_mgr()</a>,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;born = <a href="erlang.html#type-timestamp" class="seealso">erlang:timestamp()</a>}</h3></div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="type"><h3 id="type-wpool">wpool() = <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#wpool{name = <a href="/Users/elbrujohalcon/Projects/inaka/worker_pool/doc/wpool.html#type-name" class="seealso">wpool:name()</a>,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size = integer() >= 1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = integer() >= 1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opts = [<a href="/Users/elbrujohalcon/Projects/inaka/worker_pool/doc/wpool.html#type-option" class="seealso">wpool:option()</a>],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qmanager = <a href="wpool_queue_manager.html#type-queue_mgr" class="seealso">wpool_queue_manager:queue_mgr()</a>,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;born = <a href="erlang.html#type-timestamp" class="seealso">erlang:timestamp()</a>}</h3></div></div>
 <div id="functions" class="category"><h4><a href="#functions">Functions</a></h4><hr />
 <div class="function">
 <h3 id="create_table/0">create_table()&nbsp;-&gt;&nbsp;ok</h3>
@@ -73,6 +73,14 @@
 <div class="description">
 
 <p>Picks&nbsp;the&nbsp;next&nbsp;worker&nbsp;in&nbsp;a&nbsp;round&nbsp;robin&nbsp;fashion</p>
+</div></div>
+<div class="function">
+<h3 id="next_available_worker/1">next_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;atom()</h3>
+
+
+<div class="description">
+
+<p>Picks&nbsp;the&nbsp;first&nbsp;available&nbsp;worker,&nbsp;if&nbsp;any</p>
 </div></div>
 <div class="function">
 <h3 id="call_available_worker/1">call_available_worker(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool),&nbsp;Call::any(),&nbsp;Timeout::timeout())&nbsp;-&gt;&nbsp;any()</h3>
@@ -148,6 +156,20 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;just&nbsp;forwards&nbsp;the&nbsp;event&nbsp;when&nbsp;it&nbsp;gets&nbsp;the&nbsp;worker</p>
 </div></div>
 <div class="function">
+<h3 id="all/0">all()&nbsp;-&gt;&nbsp;[name()&nbsp;(see&nbsp;module&nbsp;wpool)]</h3>
+
+
+<div class="description">
+&nbsp;</div></div>
+<div class="function">
+<h3 id="stats/0">stats()&nbsp;-&gt;&nbsp;[stats()&nbsp;(see&nbsp;module&nbsp;wpool)]</h3>
+
+
+<div class="description">
+
+<p>Retrieves&nbsp;the&nbsp;pool&nbsp;stats&nbsp;for&nbsp;all&nbsp;pools</p>
+</div></div>
+<div class="function">
 <h3 id="stats/1">stats(Sup::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;stats()&nbsp;(see&nbsp;module&nbsp;wpool)</h3>
 
 
@@ -156,28 +178,12 @@
 <p>Retrieves&nbsp;a&nbsp;snapshot&nbsp;of&nbsp;the&nbsp;pool&nbsp;stats</p>
 </div></div>
 <div class="function">
-<h3 id="worker_names/1">worker_names(Pool_Name::name()&nbsp;(see&nbsp;module&nbsp;wpool))&nbsp;-&gt;&nbsp;[atom()]</h3>
+<h3 id="next/1">next(Next::pos_integer(),&nbsp;WPool::wpool())&nbsp;-&gt;&nbsp;wpool()</h3>
 
 
 <div class="description">
 
-<p>Returns&nbsp;the&nbsp;names&nbsp;of&nbsp;the&nbsp;workers&nbsp;in&nbsp;the&nbsp;pool</p>
-</div></div>
-<div class="function">
-<h3 id="wpool_size/1">wpool_size(Name::atom())&nbsp;-&gt;&nbsp;non_neg_integer()&nbsp;|&nbsp;undefined</h3>
-
-
-<div class="description">
-
-<p>the&nbsp;number&nbsp;of&nbsp;workers&nbsp;in&nbsp;the&nbsp;pool</p>
-</div></div>
-<div class="function">
-<h3 id="wpool_set/1">wpool_set(Tail::[{atom(),&nbsp;any()}],&nbsp;WPool::wpool())&nbsp;-&gt;&nbsp;wpool()</h3>
-
-
-<div class="description">
-
-<p>Set&nbsp;values&nbsp;from&nbsp;the&nbsp;worker&nbsp;pool&nbsp;record.&nbsp;Useful&nbsp;when&nbsp;using
+<p>Set&nbsp;next&nbsp;within&nbsp;the&nbsp;worker&nbsp;pool&nbsp;record.&nbsp;Useful&nbsp;when&nbsp;using
 &nbsp;&nbsp;a&nbsp;custom&nbsp;strategy&nbsp;function.</p>
 </div></div>
 <div class="function">
@@ -190,7 +196,7 @@
 &nbsp;&nbsp;strategy&nbsp;function.</p>
 </div></div>
 <div class="function">
-<h3 id="find_wpool/1">find_wpool(Name::atom())&nbsp;-&gt;&nbsp;wpool()</h3>
+<h3 id="find_wpool/1">find_wpool(Name::atom())&nbsp;-&gt;&nbsp;undefined&nbsp;|&nbsp;wpool()</h3>
 
 
 <div class="description">
